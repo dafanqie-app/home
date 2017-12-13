@@ -30,6 +30,21 @@
       display: block;
       text-decoration: underline;
     }
+    .screen {
+      background-size: cover!important;
+      background-image: url('./static/screen.png')!important;
+      background-position: cover!important;
+    }
+    #tips-360 {
+      margin: 0 auto;
+      margin-top: 50px;
+      width: 400px;
+      text-align: center;
+      color: #cecece;
+    }
+    #tips-360 p {
+      margin: 10px;
+    }
     </style>
   </head>
 
@@ -56,8 +71,7 @@
       <div class="centerdevices col-12">
         <div class="computerwrapper">
           <div class="computer">
-            <div class="mask">
-              <img src="./static/ok1.gif" alt="" style="width: 100%; height: 100%;">
+            <div class="mask screen">
             </div>
           </div>
         </div>
@@ -75,6 +89,11 @@
       <div class="download-links">
         <a>Android (即将发布)</a>
         <a>iOS (即将发布)</a>
+      </div>
+      <div id="tips-360">
+        使用提示
+        <p>因为加速器需要修改系统的代理配置，如果你安装了杀毒软件，请点击允许本程序的配置方可生效。</p>
+        <img src="./static/360.png" style="width: 300px; border-radius: 5px">
       </div>
     </div>
   </header>
@@ -131,6 +150,7 @@
     
     if (isWindows) {
       show("马上下载 Windows", "./releases/windows/大番茄加速器.exe")
+      show36oTips()
     } else if (isMac) {
       show("马上下载 MacOS", "./releases/mac/dafanqie.dmg")
     } else {
@@ -138,13 +158,18 @@
     }
 
     function show (wording, link) {
-      const downloadButton = document.getElementById("download-button")
+      var downloadButton = document.getElementById("download-button")
       downloadButton.innerHTML = wording || "马上下载"
       if (link) {
         downloadButton.setAttribute("href", link)
       } else {
         downloadButton.remoteAttribute("href")
       }
+    }
+
+    function show360Tips () {
+      var tips = document.getElementById("tips-360")
+      tips.style.display = "block"  
     }
   </script>
 
